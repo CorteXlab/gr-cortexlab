@@ -1,0 +1,15 @@
+<block>
+  <name>Ieee802 15 4 splitter</name>
+  <key>cortexlab_ieee802_15_4_splitter</key>
+  <category>CorteXlab</category>
+  <import>import cortexlab</import>
+  <make>cortexlab.ieee802_15_4_splitter()</make>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>

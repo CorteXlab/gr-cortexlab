@@ -1,0 +1,17 @@
+<block>
+  <name>Ieee802 15 4 packet sink</name>
+  <key>cortexlab_ieee802_15_4_packet_sink</key>
+  <category>CorteXlab</category>
+  <import>import cortexlab</import>
+  <make>cortexlab.ieee802_15_4_packet_sink($th)</make>
+  <param>
+    <name>Th</name>
+    <key>th</key>
+    <value>10</value>
+    <type>raw</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+</block>

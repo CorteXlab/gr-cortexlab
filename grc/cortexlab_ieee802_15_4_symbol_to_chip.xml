@@ -1,0 +1,16 @@
+<block>
+  <name>Ieee802 15 4 symbol to chip</name>
+  <key>cortexlab_ieee802_15_4_symbol_to_chip</key>
+  <category>CorteXlab</category>
+  <import>import cortexlab</import>
+  <make>cortexlab.ieee802_15_4_symbol_to_chip()</make>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <nports>2</nports>
+  </source>
+</block>
