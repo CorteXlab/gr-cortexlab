@@ -16,9 +16,10 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-
 install(FILES
     cortexlab_ieee802_15_4_packet_sink.xml
     cortexlab_ieee802_15_4_splitter.xml
-    cortexlab_ieee802_15_4_symbol_to_chip.xml DESTINATION share/gnuradio/grc/blocks
+    cortexlab_ieee802_15_4_symbol_to_chip.xml
+    cortexlab_resync_antennas.xml
+    DESTINATION share/gnuradio/grc/blocks
 )

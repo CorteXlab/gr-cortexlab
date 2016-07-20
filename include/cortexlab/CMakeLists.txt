@@ -24,5 +24,7 @@ install(FILES
     api.h
     ieee802_15_4_packet_sink.h
     ieee802_15_4_splitter.h
-    ieee802_15_4_symbol_to_chip.h DESTINATION include/cortexlab
+    ieee802_15_4_symbol_to_chip.h
+    resync_antennas.h
+    DESTINATION include/cortexlab
 )
