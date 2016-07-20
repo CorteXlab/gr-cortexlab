@@ -1,0 +1,36 @@
+<block>
+  <name>Resync antennas</name>
+  <key>cortexlab_resync_antennas</key>
+  <category>CorteXlab</category>
+  <import>import cortexlab</import>
+  <make>cortexlab.resync_antennas($num_sample, $spread_factor, $waiting_samples)</make>
+  <param>
+    <name>Number of samples</name>
+    <key>num_sample</key>
+    <value>32</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Spread factor</name>
+    <key>spread_factor</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Waiting samples</name>
+    <key>waiting_samples</key>
+    <value>10000</value>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <nports>2</nports>
+  </sink>
+  <source>
+    <name>delay</name>
+    <type>message</type>
+    <nports>1</nports>
+    <optional>True</optional>
+  </source>
+</block>
