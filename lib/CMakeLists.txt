@@ -29,6 +29,7 @@ list(APPEND cortexlab_sources
     ieee802_15_4_splitter_impl.cc
     ieee802_15_4_symbol_to_chip_impl.cc
     resync_antennas_impl.cc
+    delay_msg_impl.cc
     )
 
 set(cortexlab_sources "${cortexlab_sources}" PARENT_SCOPE)

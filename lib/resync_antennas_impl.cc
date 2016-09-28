@@ -50,7 +50,6 @@ namespace gr {
       delay(5)
     {
     	message_port_register_out(pmt::mp("delay") );
-    	message_port_pub(pmt::mp("delay"), pmt::mp(5));
     }
 
     /*
@@ -115,6 +114,7 @@ namespace gr {
                        gr_vector_const_void_star &input_items,
                        gr_vector_void_star &output_items)
     {
+      //std::cout << (int )ninput_items[0] << std::endl;
     	int ninput_items_0 = (int )ninput_items[0];
     	int ninput_items_1 = (int )ninput_items[1];
 
@@ -127,16 +127,20 @@ namespace gr {
     	}
     	else
     	{
+        std::cout << "A" << std::endl;
     		remaining_samples = waiting_samples;
     		consume_each(waiting_samples);
     		if ((ninput_items_0 < mini + num_samples) or (ninput_items_1 < mini + num_samples * (spread_factor + 1)/2))
     		{
+          std::cout << "B" << std::endl;
     			return 0;
     		}
+        std::cout << "C" << std::endl;
     		const float* input_items_0 = (const float*) input_items[0];
     		const float* input_items_1 = (const float*) input_items[1];
 
     		std::vector<float> results;
+
     		float sum = 0;
     		for (int i = mini - num_samples * (spread_factor - 1)/2 - 1; i < mini - 1 + num_samples * (spread_factor - 1)/2; i++)
     		{
@@ -146,13 +150,11 @@ namespace gr {
     				sum += input_items_0[mini + j - 1] * input_items_1[i + j];
     			}
     			results.push_back(sum);
-    			//std::cout << sum << std::endl;
     		}
 
-    		std::cout << "indice : " << argmax(results) << std::endl;
+    		//std::cout << "indice : " << argmax(results) << std::endl;
 
     		delay = argmax(results) - num_samples * (spread_factor -1)/2;
-
     		message_port_pub(pmt::mp("delay"), pmt::mp(delay));
 
     		return 0;
@@ -160,29 +162,6 @@ namespace gr {
 
     	}
 
-
-
-		// idx = 0
-		// res = np.zeros(self.num_samples*(self.search_factor - 1) +1)
-
-
-		// for i in range(a - self.num_samples* (self.search_factor - 1)/2 -1, a -1 + self.num_samples*(self.search_factor - 1)/2	):
-		// 	sum = 0
-		// 	for j in range(self.num_samples):
-		// 		sum = sum + in0[a + j - 1] * in1[i + j]
-		// 	res[idx] = sum
-		// 	idx += 1
-
-		// self.delay = int(np.argmax(res) - self.num_samples* (self.search_factor - 1)/2.)
-		// return 0
-
-  //     const float *in = (const float *) input_items[0];
-		// message_port_pub(pmt::mp("delay"), pmt::mp(5));
-		// consume_each((int )ninput_items[0]);
-		// std::cout << (int )ninput_items[0] << std::endl;
-      // Do <+signal processing+>
-
-      // Tell runtime system how many output items we produced.
       return 0;
     }
 

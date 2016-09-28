@@ -21,5 +21,6 @@ install(FILES
     cortexlab_ieee802_15_4_splitter.xml
     cortexlab_ieee802_15_4_symbol_to_chip.xml
     cortexlab_resync_antennas.xml
+    cortexlab_delay_msg.xml
     DESTINATION share/gnuradio/grc/blocks
 )

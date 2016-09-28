@@ -26,5 +26,6 @@ install(FILES
     ieee802_15_4_splitter.h
     ieee802_15_4_symbol_to_chip.h
     resync_antennas.h
+    delay_msg.h
     DESTINATION include/cortexlab
 )
