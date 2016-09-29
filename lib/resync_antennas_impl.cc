@@ -47,7 +47,7 @@ namespace gr {
       spread_factor(i_spread_factor), 
       waiting_samples(i_waiting_samples),
       remaining_samples(i_waiting_samples),
-      delay(5)
+      delay(0)
     {
     	message_port_register_out(pmt::mp("delay") );
     }
@@ -68,8 +68,6 @@ namespace gr {
     void
     resync_antennas_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
     {
-    	//std::cout << noutput_items << std::endl;
-
     	if (remaining_samples > 8192)
     	{
     		ninput_items_required[0] = 8192;
@@ -78,7 +76,7 @@ namespace gr {
     	else
     	{
     		ninput_items_required[0] = remaining_samples + num_samples;
-    		ninput_items_required[0] = remaining_samples + num_samples* (spread_factor + 1)/2;
+    		ninput_items_required[1] = remaining_samples + num_samples* (spread_factor + 1)/2;
     	}	
     }
 
@@ -123,19 +121,20 @@ namespace gr {
     	{
     		consume_each(mini);
     		remaining_samples -= mini;
+    		//std::cout << "D" << std::endl;
     		return 0;
     	}
     	else
     	{
-        std::cout << "A" << std::endl;
+        //std::cout << "A" << std::endl;
     		remaining_samples = waiting_samples;
     		consume_each(waiting_samples);
     		if ((ninput_items_0 < mini + num_samples) or (ninput_items_1 < mini + num_samples * (spread_factor + 1)/2))
     		{
-          std::cout << "B" << std::endl;
+          //std::cout << "B" << std::endl;
     			return 0;
     		}
-        std::cout << "C" << std::endl;
+        //std::cout << "C" << std::endl;
     		const float* input_items_0 = (const float*) input_items[0];
     		const float* input_items_1 = (const float*) input_items[1];
 
